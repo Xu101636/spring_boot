@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/emp/excelinput}" method="post" enctype="multipart/form-data">
+    <input type="file" name="ff"/>
+    <input type="submit" value="导入"/> <a href="/empmodel.xls">下载模板</a>
+</form>
+<p><a th:href="@{/emp/exportemp}">导出员工</a></p>
+<hr/>
+    <table bgcolor="#a52a2a" align="center" cellspacing="1" width="60%">
+        <tr bgcolor="white">
+            <th>编号</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>年龄</th>
+            <th>头像</th>
+            <th>身份证号</th>
+            <th>部门编号</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="emp:${emplist}" bgcolor="white">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.ename}"></td>
+            <td th:text="${emp.pwd}"></td>
+            <td th:text="${emp.age}"></td>
+            <td th:text="${emp.face}"></td>
+            <td th:text="${emp.idcard}"></td>
+            <td th:text="${emp.did}"></td>
+            <td><a th:href="@{/emp/toupd(id=${emp.id})}">修改</a> <a th:href="@{/emp/del(id=${emp.id})}">删除</a></td>
+        </tr>
+    </table>
+    <!--${PageContext.request.contxtPath}/emp/toadd}-->
+    <a th:href="@{/emp/toadd}">添加</a>
+</body>
+</html>

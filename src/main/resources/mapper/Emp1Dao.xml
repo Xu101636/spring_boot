@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.Emp1Dao">
+    <!--resultType 本来是需要指定类的全限定名，在mynatis.xml中设置了别名则只需要直接用别名-->
+    <select id="allemp" resultType="Emp1">
+        <!--自动转义特殊字符，避免可能出现的标签格式问题-->
+        <![CDATA[
+          select * from emp1
+        ]]>
+    </select>
+
+    <insert id="addemp">
+        insert into emp1 values(null,#{ename},#{pwd},#{sex},#{age},#{idcard},#{tel},#{birth},#{face},#{did})
+    </insert>
+</mapper>
